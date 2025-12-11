@@ -55,7 +55,7 @@
       toggleBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
   });
 
-  // === Ambil data dari Apps Script via AJAX GET ===
+  // === Ambil data dari GAS ===
   const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyqJ4u8maNKM97iqKl511Q9K8pY5_SnJQajA6Gtt7I6-RrZfq2ZT79zbmYsmYT8Sq28/exec"; // ganti dengan URL Web App kamu
 
   fetch(WEB_APP_URL)
@@ -133,6 +133,7 @@
           tryOpenSponsor();
       }
   });
+
 
 
 
