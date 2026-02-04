@@ -1,20 +1,10 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Loker Kesehatan ID</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4/animate.min.css"/>
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <style>   
-        :root {
+:root {
             --primary: #0088cc;
             --secondary: #3d5a80;
             --accent: #f27b09;
             --green: #127720;
             --brown: #473933;
-            --light-bg: #ffffff;
+            --light-bg: #e0fbfc;
             --light-text: #293241;
             --white: #fff;
         }
@@ -26,7 +16,7 @@
         }
 
         body {
-            font-family: Lato, sans-serif;
+            font-family: "Poppins", sans-serif;
             font-size: 16px;
             margin: 0;
             background: var(--light-bg);
@@ -70,14 +60,8 @@
             margin: 15px 0 5px;
         }
 
-        header h2 {
-            font-size: 1.5em;
-            font-weight: 400;
-            margin-top: 0;
-            margin-bottom: 5px;
-        }
-
         header p {
+            font-family: Lato, sans-serif;
             font-size: 1.2em;
             margin: 0;
         }
@@ -120,7 +104,7 @@
         .btn-blue { background: #1d559d; color: #fff; }
         .btn-white { background: #fff; color: #3d5a80; border: 1px solid #ddd; }
         .btn-green { background: #127720; color: #fff; }
-        .btn-brown { background: #5c4b41; color: #fff; }
+        .btn-brown { background: #473933; color: #fff; }
 
         .socials {
             padding: 30px 0;
@@ -150,7 +134,7 @@
         }
 
         footer {
-            margin: 50px 0 35px;
+            margin: 80px 0 35px;
             font-size: 0.9em;
             text-align: center;
         }
@@ -184,13 +168,14 @@
             transform: scale(1.1); 
         }
 
+        a:-webkit-any-link {
+            text-decoration: none;
+        }
+
         /* Tablet */
         @media (min-width: 768px) and (max-width: 1024px) {
             header h1 {
                 font-size: 1.4em;
-            }
-            header h2 { 
-                font-size: 1.2em; 
             }
             header p { 
                 font-size: 1em;
@@ -209,9 +194,6 @@
             header h1 { 
                 font-size: 1.4em; 
             }
-            header h2 { 
-                font-size: 1.2em; 
-            }
             header p { 
                 font-size: 1em;
             }
@@ -223,79 +205,3 @@
                 width: 90%;
             }
         }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <button class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i></button>
-        <header>
-            <h1>Loker Kesehatan ID</h1>
-            <h2>Paket Paid Promote</h2>            
-        </header>
-
-        <div id="linksContainer">Sedang memuat data...</div>
-
-        <footer>
-            <a href="">Loker Kesehatan ID</a> © 2018 - <span id="year"></span>
-        </footer>
-    </div>
-    
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Dark Mode
-    const toggleBtn = document.getElementById("darkToggle");
-    const body = document.body;
-    if (localStorage.getItem("darkMode") === "true") {
-        body.classList.add("dark");
-        toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
-    }
-    toggleBtn.addEventListener("click", () => {
-        body.classList.toggle("dark");
-        const isDark = body.classList.contains("dark");
-        localStorage.setItem("darkMode", isDark);
-        toggleBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-    });
-
-    // === Ambil data dari GAS ===
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyqJ4u8maNKM97iqKl511Q9K8pY5_SnJQajA6Gtt7I6-RrZfq2ZT79zbmYsmYT8Sq28/exec?site=B"; // ganti dengan URL Web App kamu
-
-    fetch(WEB_APP_URL)
-    .then(response => response.json())
-    .then(data => renderLinks(data))
-    .catch(err => {
-        document.getElementById("linksContainer").textContent = "Gagal memuat data.";
-        console.error("Error:", err);
-    });
-
-    function renderLinks(links) {
-        const container = document.getElementById("linksContainer");
-        container.innerHTML = "";
-        
-        const validLinks = links.filter(link =>
-            link.url && link.url.trim() !== "" &&
-            link.label && link.label.trim() !== ""
-        );
-
-        if (validLinks.length === 0) {
-            container.textContent = "Tidak ada data link untuk ditampilkan.";
-            return;
-        }
-
-    // Render hanya link yang valid
-    validLinks.forEach(link => {
-        const a = document.createElement("a");
-        a.href = link.url;
-        a.className = `btn ${link.color || "btn-default"}`;
-        a.innerHTML = `
-        ${link.icon ? `<i class="${link.icon}"></i>` : ""}
-        ${link.label}
-        `;
-        a.target = "_blank";
-        container.appendChild(a);
-    });
-    }
-</script>
-</body>
-</html>
