@@ -8,7 +8,7 @@
     function showAgreementPopup() {
         Swal.fire({
             title: "Info Penting!",
-            text: "Website ini mengandung link iklan shopee affiliate. Link iklan akan redirect 1 kali saat anda klik di semua tombol dan delay 5 menit. Apakah anda setuju dengan iklan yang akan tampil di website ini?",
+            text: "Website ini mengandung link iklan shopee affiliate. Link iklan akan tampil 1 kali saat anda klik di semua tombol. Apakah anda setuju dengan iklan yang akan tampil di website ini?",
             input: "checkbox",
             inputValue: 0,
             inputPlaceholder: "Ya, saya setuju min",
